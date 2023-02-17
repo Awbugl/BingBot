@@ -25,7 +25,7 @@ namespace BingBot.Wpf.Common;
 internal static class Program
 {
     //TODO: Update Version
-    internal const string Version = "v0.5.1";
+    internal const string Version = "v0.0.1";
 
     internal static readonly ObservableCollection<ExceptionLog> Exceptions = new();
     internal static readonly ObservableCollection<MessageLog> Messages = new();

@@ -15,6 +15,7 @@
         <PublishReadyToRun>true</PublishReadyToRun>
         <AssemblyName>BingBot</AssemblyName>
         <NeutralLanguage>zh-Hans</NeutralLanguage>
+        <ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -45,6 +46,7 @@
         <Resource Include="Assets\img_message.png" />
         <Resource Include="Assets\img_setting.png" />
         <Resource Include="Assets\min.png" />
+        <Resource Include="Assets\favicon.ico" />
     </ItemGroup>
 
 </Project>
