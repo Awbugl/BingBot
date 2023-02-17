@@ -40,4 +40,13 @@ public static class ExceptionLogger
             File.AppendAllText(Path.ExceptionReport, $"{DateTime.Now}\n{ex}\n\n");
         }
     }
+
+    internal static void LogJson(object json)
+    {
+        
+        lock (SyncObj)
+        {
+            File.AppendAllText(Path.Log, $"{DateTime.Now}\n{json}\n\n");
+        }
+    }
 }

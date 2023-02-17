@@ -9,6 +9,7 @@ public class Path
 
     public static readonly Path Config = new(ConfigRoot + "config.json"),
                                 RobotReply = new(ConfigRoot + "replytemplate.json"),
+                                Log = new(BaseDirectory + "BingChatLog.log"),
                                 ExceptionReport = new(BaseDirectory + "BingChatExceptionReport.log");
 
     private readonly string _rawpath;
