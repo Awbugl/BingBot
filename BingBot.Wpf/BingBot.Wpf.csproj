@@ -39,7 +39,6 @@
     <ItemGroup>
         <Resource Include="Assets\chevron-down.png" />
         <Resource Include="Assets\close.png" />
-        <Resource Include="Assets\favicon.ico" />
         <Resource Include="Assets\Fonts\Roboto-Light.ttf" />
         <Resource Include="Assets\img_contact.png" />
         <Resource Include="Assets\img_map.png" />
