@@ -1,0 +1,71 @@
+using System.ComponentModel;
+using Konata.Core.Common;
+using Newtonsoft.Json;
+
+namespace BingBot.Core.Common;
+
+public class ConfigJson
+{
+    [JsonProperty("protocol")]
+    public OicqProtocol Protocol { get; set; }
+
+    [JsonProperty("keystore")]
+    public BotKeyStore? KeyStore { get; set; }
+
+    [JsonProperty("device")]
+    public BotDevice? Device { get; set; }
+}
+
+public class AccountInfo
+{
+    [JsonProperty("uid")]
+    public uint Account { get; set; }
+
+    [JsonProperty("password")]
+    public string Password { get; set; } = "";
+}
+
+public class BingBotSettings
+{
+    [JsonProperty("friend_add")]
+    public bool FriendAdd { get; set; }
+
+    [JsonProperty("group_add")]
+    public bool GroupAdd { get; set; }
+
+    [JsonProperty("group_inviter_whitelist")]
+    public List<uint> GroupInviterWhitelist { get; set; } = new();
+}
+
+public class BingBotConfig
+{
+    [JsonProperty("master")]
+    public uint Master { get; set; }
+
+    [JsonProperty("protocol")]
+    public OicqProtocol Protocol { get; set; }
+
+    [JsonProperty("slider")]
+    public SliderType SliderType { get; set; }
+
+    [JsonProperty("enable_handle_message")]
+    public bool EnableHandleMessage { get; set; } = true;
+
+    [JsonProperty("accounts")]
+    public List<AccountInfo> Accounts { get; set; } = new();
+
+    [JsonProperty("bingcookie")]
+    public string? BingChatCookie { get; set; } = "";
+
+    [JsonProperty("approve_settings")]
+    public BingBotSettings Settings { get; set; } = new();
+}
+
+public enum SliderType
+{
+    [Description("滑块验证助手")]
+    Helper,
+
+    [Description("浏览器模拟滑块（不建议）")]
+    Browser
+}

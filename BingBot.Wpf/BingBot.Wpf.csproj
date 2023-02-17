@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <PublishSingleFile>true</PublishSingleFile>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <SelfContained>true</SelfContained>
+        <DebugType>embedded</DebugType>
+        <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+        <SatelliteResourceLanguages>None</SatelliteResourceLanguages>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PublishReadyToRun>true</PublishReadyToRun>
+        <AssemblyName>BingBot</AssemblyName>
+        <NeutralLanguage>zh-Hans</NeutralLanguage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+        <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+        <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.774.44" />
+        <PackageReference Include="Microsoft.Web.WebView2.DevToolsProtocolExtension" Version="1.0.824" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Git\Konata.Core\Konata.Core\Konata.Core.csproj" />
+        <ProjectReference Include="..\BingBot.Core\BingBot.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ApplicationDefinition Include="UI\App.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </ApplicationDefinition>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="Assets\chevron-down.png" />
+        <Resource Include="Assets\close.png" />
+        <Resource Include="Assets\favicon.ico" />
+        <Resource Include="Assets\Fonts\Roboto-Light.ttf" />
+        <Resource Include="Assets\img_contact.png" />
+        <Resource Include="Assets\img_map.png" />
+        <Resource Include="Assets\img_message.png" />
+        <Resource Include="Assets\img_setting.png" />
+        <Resource Include="Assets\min.png" />
+    </ItemGroup>
+
+</Project>

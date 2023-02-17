@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="BingBot.Wpf.UI.UserControl.Setting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+             xmlns:common1="clr-namespace:Konata.Core.Common;assembly=Konata.Core"
+             xmlns:local="clr-namespace:BingBot.Core.Common;assembly=BingBot.Core"
+             xmlns:common="clr-namespace:BingBot.Wpf.Common"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="800" x:ClassModifier="internal">
+    <UserControl.Resources>
+        <common:EnumDescriptionConverter x:Key="EnumConverter" />
+        <ObjectDataProvider
+            x:Key="ProtocolList"
+            MethodName="GetValues"
+            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="common1:OicqProtocol" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="SliderList"
+            MethodName="GetValues"
+            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:SliderType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
+
+    <Grid Background="#23262A">
+
+        <Grid Background="#23262A">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="30,-30,0,0">
+                    <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                               Text="Bot管理员QQ号" VerticalAlignment="Center"
+                               FontFamily="Microsoft YaHei" FontSize="16"
+                               Background="#23262A" />
+                    <TextBox x:Name="MasterQQ" Width="240" HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Margin="30,0,0,0"
+                             BorderThickness="0,0,0,1" Foreground="DarkGray" PreviewTextInput="OnPreviewTextInput"
+                             InputMethod.IsInputMethodEnabled="False"
+                             FontSize="16" Background="#23262A" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="30, 60,0,0">
+                    <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                               Text="NewBing Cookie" VerticalAlignment="Center"
+                               FontFamily="Microsoft YaHei" FontSize="16"
+                               Background="#23262A" />
+                    <TextBox x:Name="Cookie" Width="240" HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Margin="20,0,0,0"
+                             BorderThickness="0,0,0,1" Foreground="DarkGray"
+                             InputMethod.IsInputMethodEnabled="False"
+                             FontSize="16" Background="#23262A" />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="30,20,0,0">
+                    <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                               Text="默认登录协议" VerticalAlignment="Top"
+                               FontFamily="Microsoft YaHei" FontSize="16"
+                               Background="#23262A" Margin="0,-2,0,0" />
+                    <ComboBox x:Name="ProtocolComboBox" Width="140" Height="25" Margin="20,-3,0,0"
+                              VerticalAlignment="Top"
+                              FontFamily="Microsoft YaHei" FontSize="16"
+                              ItemsSource="{Binding Source={StaticResource ProtocolList}}"
+                              SelectionChanged="ComboBox_OnSelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource EnumConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="30,70,0,0">
+                    <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                               Text="滑块验证方案" VerticalAlignment="Top"
+                               FontFamily="Microsoft YaHei" FontSize="16"
+                               Background="#23262A" Margin="0,-2,0,0" />
+                    <ComboBox x:Name="SliderComboBox" Width="140" Height="25" Margin="20,-3,0,0"
+                              VerticalAlignment="Top"
+                              FontFamily="Microsoft YaHei" FontSize="16"
+                              ItemsSource="{Binding Source={StaticResource SliderList}}"
+                              SelectionChanged="ComboBox_OnSelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource EnumConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+               
+                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="30,-13,0,0">
+                    <CheckBox x:Name="EnableProcess" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                                   Text="消息处理总开关（风控期建议关闭）" VerticalAlignment="Center" Margin="0,-2,0,0"
+                                   FontFamily="Microsoft YaHei" FontSize="16"
+                                   Background="#23262A" />
+                    </CheckBox>
+                    <StackPanel Orientation="Horizontal" Height="40" Margin="0,0,0,0">
+                        <CheckBox x:Name="AutoFriendRequest" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                  Margin="0,20,0,0">
+
+                            <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                                       Text="自动同意好友申请" VerticalAlignment="Center" Margin="0,-2,0,0"
+                                       FontFamily="Microsoft YaHei" FontSize="16"
+                                       Background="#23262A" />
+                        </CheckBox>
+
+                        <CheckBox x:Name="AutoGroupRequest"
+                                  VerticalAlignment="Center" HorizontalAlignment="Left"
+                                  Margin="40,20,0,0">
+                            <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                                       Text="自动同意群邀请（非白名单）" VerticalAlignment="Center" Margin="0,-2,0,0"
+                                       FontFamily="Microsoft YaHei" FontSize="16"
+                                       Background="#23262A" />
+                        </CheckBox>
+                    </StackPanel>
+                    <Button Margin="0,60,0,0" Height="30" Width="425" HorizontalAlignment="Left"
+                            Click="OnSaveButtonClick">
+                        <TextBlock TextWrapping="Wrap" Text="保存并应用" FontSize="16" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Margin="60,60,0,0" Width="Auto" Height="Auto">
+                <TextBlock Foreground="Azure" IsHitTestVisible="False" HorizontalAlignment="Left"
+                           Text="群邀请白名单（QQ号，分行）" VerticalAlignment="Center"
+                           FontFamily="Microsoft YaHei" FontSize="16"
+                           Background="#23262A" Height="30" />
+                <TextBox x:Name="WhiteList" Width="Auto" Height="370"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Visible"
+                         InputMethod.IsInputMethodEnabled="False"
+                         FontFamily="Microsoft YaHei" FontSize="16"
+                         Margin="0,10,70,10" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
